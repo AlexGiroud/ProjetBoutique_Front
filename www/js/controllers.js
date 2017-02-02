@@ -24,7 +24,9 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('ProductCtrl', function($scope) {
-
+.controller('ProductCtrl', function($scope, $stateParams, $http) {
+  $http.get("http://giroud-bit.fr:3000/api/produits/"+$stateParams['productID']).success(function(data) {
+    $scope.product = data;
+  })
 })
 

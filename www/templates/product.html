@@ -1,5 +1,13 @@
-<ion-view title="Produit">
+<ion-view title="Details">
     <ion-content>
-
+        <div class="list card">
+            <div class="item item-avatar">
+                <h2>{{product.name}}</h2>
+            </div>
+            <div class="item item-body">
+                <img class="full-image" ng-src="{{product.imageUrl}}">
+                <p>{{product.description}}</p>
+            </div>
+        </div>
     </ion-content>
 </ion-view>

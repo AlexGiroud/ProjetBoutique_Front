@@ -2,7 +2,7 @@
   <ion-content>
     <div class="list shoppingList">
       <div class="item item-thumbnail-left item-button-right" ng-repeat="product in products">
-        <img ng-src="{{product.imageUrl}}">
+        <a class="item-thumbnail-left" href="#/tab/product/{{product.id}}"><img ng-src="{{product.imageUrl}}"></a>
         <h2>{{product.name}}</h2>
         <p>{{product.description}}</p>
         <p ng-if="product.inStock == true">En stock</p>

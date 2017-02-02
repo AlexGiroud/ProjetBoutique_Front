@@ -44,7 +44,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-  .state('tab.shop.product', {
+  .state('tab.product', {
     url: '/product/:productID',
     views: {
       'shopView': {
