@@ -4,11 +4,12 @@
       <div class="item item-thumbnail-left" ng-repeat="product in products track by $index">
         <img ng-src="{{product.imageUrl}}">
         <h2>{{product.name}}</h2>
+        <p>Quantité : </p>
         <h2 class="product_price">{{product.price}}</h2>
       </div>
       <div class="card">
         <div class="item item-text-wrap">
-          <h2>TOTAL : 1000e</h2>
+          <h2>TOTAL : {{amountBasket()}}</h2>
         </div>
       </div>
       <button class="button button-block button-positive">

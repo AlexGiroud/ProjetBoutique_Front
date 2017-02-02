@@ -3,3 +3,7 @@
 .basketButton {
     margin-top: 30px;
 }
+
+.badge-container{
+      position: relative;
+}
