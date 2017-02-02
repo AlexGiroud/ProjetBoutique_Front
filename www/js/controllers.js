@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('ShopCtrl', function($scope, $http, basketService) {
+.controller('ShopCtrl', function($scope, $http, basketService, ) {
 
   $http.get("http://giroud-bit.fr:3000/api/produits").success(function(data){
     $scope.products = data;
