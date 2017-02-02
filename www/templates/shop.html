@@ -1,17 +1,17 @@
 <ion-view view-title="Shop">
   <ion-content>
     <div class="list shoppingList">
-      <a class="item item-thumbnail-left item-button-right" ng-repeat="product in products">
+      <div class="item item-thumbnail-left item-button-right" ng-repeat="product in products">
         <img ng-src="{{product.imageUrl}}">
         <h2>{{product.name}}</h2>
         <p>{{product.description}}</p>
         <p ng-if="product.inStock == true">En stock</p>
         <p ng-if="product.inStock == false">Rupture</p>
         <h2 class="product_price">{{product.price}}</h2>
-        <button class="button button-positive basketButton">
+        <button class="button button-positive basketButton" ng-click="addToBasket(product)">
           <i class="icon ion-plus-round"></i>
         </button>
-      </a>
+      </div>
     </div>
   </ion-content>
 </ion-view>
