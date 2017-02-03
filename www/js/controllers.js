@@ -71,7 +71,7 @@ angular.module('starter.controllers', [])
   })
 })
 
-.controller('CheckoutCtrl', function($scope, basketService, $ionicPopup) {
+.controller('CheckoutCtrl', function($scope, basketService, $ionicPopup, $rootScope, $state) {
   $scope.amountBasket = function() {
     var total = 0;
     basketService.basketProducts.forEach(function(product) {
@@ -96,6 +96,7 @@ angular.module('starter.controllers', [])
         title: 'Succès',
         template: 'Votre paiement a bien été effectué'
       });
+      $scope.resetShopping();
     }
   }
 
@@ -116,6 +117,12 @@ angular.module('starter.controllers', [])
     } else {
       return false;
     }
+  }
+
+  $scope.resetShopping = function() {
+      basketService.basketProducts = new Array();
+      $rootScope.$broadcast('update');
+      $state.go('tab.shop');
   }
 })
 
