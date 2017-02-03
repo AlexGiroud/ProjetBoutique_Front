@@ -1,20 +1,23 @@
 <ion-view view-title="Panier">
   <ion-content>
     <div class="list carList" ng-if="products().length > 0">
-      <div class="item item-thumbnail-left" ng-repeat="product in products() track by $index">
+      <div class="item item-thumbnail-left item-button-right" ng-repeat="product in products() track by $index">
         <img ng-src="{{product.imageUrl}}">
         <h2>{{product.name}}</h2>
         <p>Quantité : </p>
         <h2 class="product_price">{{product.price|currency:'€'}}</h2>
+        <button class="button button-light basketButton" ng-click="deleteFromBasket($index)">
+          <i class="icon ion-close-round"></i>
+        </button>
       </div>
       <div class="card">
         <div class="item item-text-wrap">
           <h2>TOTAL : {{amountBasket() | currency:'€'}}</h2>
         </div>
       </div>
-      <button class="button button-full button-positive">
+      <a class="button button-full button-positive" href="#/tab/checkout">
         Valider le Panier
-      </button>
+      </a>
     </div>
     <div class="card" ng-if="products().length == 0">
       <div class="item item-text-wrap">

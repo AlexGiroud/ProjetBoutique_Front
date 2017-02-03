@@ -23,14 +23,22 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     controller: 'TabCtrl'
   })
 
-  // Each tab has its own nav history stack:
-
   .state('tab.shop', {
     url: '/shop',
     views: {
       'shopView': {
         templateUrl: 'templates/shop.html',
         controller: 'ShopCtrl'
+      }
+    }
+  })
+
+  .state('tab.product', {
+    url: '/product/:productID',
+    views: {
+      'shopView': {
+        templateUrl: 'templates/product.html',
+        controller: 'ProductCtrl'
       }
     }
   })
@@ -45,12 +53,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-  .state('tab.product', {
-    url: '/product/:productID',
+  .state('tab.checkout', {
+    url: '/checkout',
     views: {
-      'shopView': {
-        templateUrl: 'templates/product.html',
-        controller: 'ProductCtrl'
+      'cartView': {
+        templateUrl: 'templates/checkout.html',
+        controller: 'CheckoutCtrl'
       }
     }
   })

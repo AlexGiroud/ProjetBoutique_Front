@@ -27,7 +27,7 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('CartCtrl', function($scope, basketService) {
+.controller('CartCtrl', function($scope, basketService, $rootScope, $ionicPopup, $location) {
   $scope.amountBasket = function() {
     var total = 0;
     $scope.products().forEach(function(product) {
@@ -38,6 +38,22 @@ angular.module('starter.controllers', [])
 
   $scope.products = function() {
     return basketService.basketProducts;
+  }
+
+  $scope.deleteFromBasket = function(index) {
+    var confirmPopup = $ionicPopup.confirm({
+      title: 'Supprimer',
+      template: 'Êtes-vous sûr de vouloir supprimer cet article à votre panier ?',
+      cancelText: 'Annuler',
+      okText: 'Oui'
+    });
+
+    confirmPopup.then(function(res) {
+      if(res) {
+        $scope.products().splice(index,1);
+        $rootScope.$broadcast('update');
+      }
+    });
   }
 })
 
@@ -53,5 +69,9 @@ angular.module('starter.controllers', [])
       badge : basketService.basketProducts.length
     };
   })
+})
+
+.controller('CheckoutCtrl', function($scope, $location) {
+  
 })
 
