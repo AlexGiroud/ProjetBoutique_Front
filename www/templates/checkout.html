@@ -3,23 +3,23 @@
     <div class="list">
         <label class="item item-input">
             <span class="input-label">Nom Prénom</span>
-            <input type="text">
+            <input type="text" ng-model="name">
         </label>
         <label class="item item-input">
             <span class="input-label">N° Carte</span>
-            <input type="text">
+            <input type="tel" ng-model="cardNumber">
         </label>
         <label class="item item-input">
             <span class="input-label">Cryptogramme</span>
-            <input type="password">
+            <input type="password" ng-model="cryptoNumber">
         </label>
     </div>
     <div class="card">
         <div class="item item-text-wrap">
-            <h2>TOTAL : </h2>
+            <h2>TOTAL : {{ amountBasket() | currency:'€'}}</h2>
         </div>
     </div>
-    <button class="button button-full button-positive">
+    <button class="button button-full button-positive" ng-click="validateCheckout(cardNumber, cryptoNumber)">
         Valider votre achat
     </button>
   </ion-content>

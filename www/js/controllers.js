@@ -71,7 +71,51 @@ angular.module('starter.controllers', [])
   })
 })
 
-.controller('CheckoutCtrl', function($scope, $location) {
-  
+.controller('CheckoutCtrl', function($scope, basketService, $ionicPopup) {
+  $scope.amountBasket = function() {
+    var total = 0;
+    basketService.basketProducts.forEach(function(product) {
+      total += product.price;
+    })
+    return Math.round(total*100)/100;
+  }
+
+  $scope.validateCheckout = function(cardNumber, cryptoNumber) {
+    if (!cardNumberCheck(cardNumber)) {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Erreur',
+        template: "Votre numéro de carte bleue n'est pas valide"
+      });
+    } else if (!cryptoCheck(cryptoNumber)) {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Erreur',
+        template: "Votre crypto n'est pas au bon format"
+      });
+    } else {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Succès',
+        template: 'Votre paiement a bien été effectué'
+      });
+    }
+  }
+
+  function cardNumberCheck(inputTxt) {
+    // Hardcore regex parce que j'en avais marre de pas trouver une qui marche
+    var re = new RegExp("^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$");
+    if (re.test(inputTxt)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  function cryptoCheck(inputTxt) {
+    var re = new RegExp("^[0-9]{3}$");
+    if (re.test(inputTxt)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 })
 
