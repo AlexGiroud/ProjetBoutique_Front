@@ -7,7 +7,7 @@
         <p>{{product.description}}</p>
         <p ng-if="product.inStock == true">En stock</p>
         <p ng-if="product.inStock == false">Rupture</p>
-        <h2 class="product_price">{{product.price}}</h2>
+        <h2 class="product_price">{{product.price | currency:'€'}}</h2>
         <button class="button button-positive basketButton" ng-click="addToBasket(product)">
           <i class="icon ion-plus-round"></i>
         </button>

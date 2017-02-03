@@ -28,14 +28,16 @@ angular.module('starter.controllers', [])
 })
 
 .controller('CartCtrl', function($scope, basketService) {
-  $scope.products = basketService.basketProducts;
-
   $scope.amountBasket = function() {
-    var amount = 0;
-    for(product in $scope.products) {
-      amount += product.price;
-    }
-    return amount;
+    var total = 0;
+    $scope.products().forEach(function(product) {
+      total += product.price;
+    })
+    return Math.round(total*100)/100;
+  }
+
+  $scope.products = function() {
+    return basketService.basketProducts;
   }
 })
 
